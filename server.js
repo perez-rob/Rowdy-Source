@@ -13,6 +13,7 @@ const helpers = require('./utils/helpers');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// play around with/look-up about cookie and if it can only be used with sequelize-session-store
 const sess = {
   secret: 'Super secret secret',
   cookie: {},
