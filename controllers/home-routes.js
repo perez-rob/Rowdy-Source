@@ -55,4 +55,13 @@ router.get('/project/:id', async (req, res) => {
   }
 });
 
+router.get('/login', async (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/profile');
+    return;
+  }
+
+  res.render('login');
+});
+
 module.exports = router;
