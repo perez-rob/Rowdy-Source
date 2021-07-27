@@ -57,4 +57,25 @@ router.post('/logout', (req, res) => {
   }
 });
 
+router.delete('/:id', async (req, res) => {
+  try {
+    const userData = await User.destroy({
+      where: {
+        id: req.params.id,
+        // WHAT IS THIS ???????????????????????????????/ NOT SURE IF NEEDED FOR USER
+        // user_id: req.session.user_id,
+      },
+    });
+
+    if (!userData) {
+      res.status(404).json({ message: 'No project found with this id!' });
+      return;
+    }
+
+    res.status(200).json(userData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

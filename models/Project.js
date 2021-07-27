@@ -3,6 +3,8 @@ const sequelize = require('../config/connection');
 
 class Project extends Model {}
 
+/// ADD COLUMN FOR PROJECT IMAGE
+
 Project.init(
   {
     id: {
@@ -24,7 +26,7 @@ Project.init(
       defaultValue: DataTypes.NOW,
     },
     needed_funding: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
     },
     user_id: {

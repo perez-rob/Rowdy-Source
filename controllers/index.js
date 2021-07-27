@@ -10,7 +10,7 @@ router.use('*', (req, res) => {
   res
     .status(404)
     .send(
-      `<h1>${req.originalUrl} is not a valid endpoint for Rowdy Source</h1>`
+      `<h1>404 - ${req.originalUrl} is not a valid endpoint for Rowdy Source</h1>`
     );
 });
 

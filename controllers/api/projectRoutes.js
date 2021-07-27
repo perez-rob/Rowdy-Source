@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const { Project } = require('../../models');
 
+// ADD AUTH PROTECTION TO THESE ROUTES
+
 router.post('/', async (req, res) => {
   try {
     const newProject = await Project.create({
@@ -19,7 +21,8 @@ router.delete('/:id', async (req, res) => {
     const projectData = await Project.destroy({
       where: {
         id: req.params.id,
-        user_id: req.session.user_id,
+        // WHAT IS THIS ???????????????????????????????/
+        // user_id: req.session.user_id,
       },
     });
 
