@@ -29,9 +29,9 @@
               </div>
             </form></li>
           {{#if loggedIn}}
-            <li><a href='/login'>Login</a></li>
+            <li><a id='logout' href='#'>Logout</a></li>
           {{else}}
-            <li><a id='logout' href='!'>Logout</a></li>
+            <li><a href='/login'>Login</a></li>
           {{/if}}
         </ul>
       </div>
@@ -41,9 +41,11 @@
       {{{body}}}
     </main>
 
-    {{! conditional script }}
     <script type='text/javascript' src='/js/materialize.min.js'></script>
     <script type='text/javascript' src='/js/main.js'></script>
+    {{#if loggedIn}}
+      <script src='/js/logout.js'></script>
+    {{/if}}
 
   </body>
 </html>

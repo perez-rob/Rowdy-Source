@@ -16,7 +16,10 @@ const PORT = process.env.PORT || 3001;
 // play around with/look-up about cookie and if it can only be used with sequelize-session-store
 const sess = {
   secret: 'Super secret secret',
-  cookie: {},
+  cookie: {
+    /// CHANGE MAXAGE AND POSSIBLY ADD OTHER PROPERTIES
+    maxAge: 600000,
+  },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
