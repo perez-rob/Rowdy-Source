@@ -48,7 +48,12 @@ router.get('/project/:id', async (req, res) => {
     );
     // REMOVE
     console.log(project);
-    res.render('projectHighlight', { project, otherProjects });
+    res.render('projectHighlight', {
+      project,
+      otherProjects,
+      loggedIn: req.session.loggedIn,
+      userId: req.session.user_id,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -62,6 +67,29 @@ router.get('/login', async (req, res) => {
   }
 
   res.render('login');
+});
+
+router.get('/profile', async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.session.user_id, {
+      include: [{ model: Project }],
+      attributes: {
+        exclude: ['password'],
+      },
+    });
+
+    const user = await userData.get({ plain: true });
+    // REMOVE
+    console.log(user);
+
+    res.render('profile', {
+      user,
+      loggedIn: req.session.loggedIn,
+      userId: req.session.user_id,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 module.exports = router;

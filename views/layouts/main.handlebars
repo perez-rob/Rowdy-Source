@@ -15,7 +15,8 @@
     <nav>
       <div class='nav-wrapper'>
         {{! move to left on sm screen }}
-        <a href='#' class='brand-logo center'>Rowdy Source - Funding for Crazy
+        <a href='/' class='left'>Home</a>
+        <a href='/' class='brand-logo center'>Rowdy Source - Funding for Crazy
           Ideas</a>
         {{! consider removing as list }}
         <ul id='nav-mobile' class='right hide-on-med-and-down'>
@@ -29,6 +30,7 @@
               </div>
             </form></li>
           {{#if loggedIn}}
+            <li><a href='/profile'>Profile</a></li>
             <li><a id='logout' href='#'>Logout</a></li>
           {{else}}
             <li><a href='/login'>Login</a></li>
